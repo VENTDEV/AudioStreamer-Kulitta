@@ -1,0 +1,685 @@
+html, body, #content {
+  width: 100%;
+  height: 100%;  
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;          
+          
+  box-sizing: border-box;
+}
+body {
+  font-family: Tahoma, Arial;
+  font-size: 16px;
+  padding: 0px 0px 55px 0px;
+  color: #fff;
+  background-color: transparent;
+  overflow: hidden;
+}
+#content {
+  position: relative;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+img {
+  border: none;
+/*  vertical-align: top;*/ /*important, otherwise 5px gap at bottom*/ /*apparently solved in IE11 current version*/
+}
+input,
+input[type="checkbox"],
+select {
+  margin-right: 1px;
+  padding: 1px 0px;
+  font-family: Tahoma, Arial;
+  font-size: 16px;
+}
+input[type="checkbox"] {
+  margin-left: 5px;
+}
+.description {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 110%;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+.iframe-style{
+  padding: 0px;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: #000;
+}
+.license_link {
+  font-size: 12px;
+  font-style: italic;
+  clear: both;
+}
+/*paddings*/
+/*
+.api:not(#api1):not(#api6):not(#api5):not(#api4):not(#api16):not(#api17) {
+  padding: 5px 5px;
+}
+*/
+/*portlets*/
+#drag1, #drag17, #drag8, #drag9, #drag15 {
+  display: none;
+}
+#drag6 {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  height: 55px;
+  overflow: hidden;
+  background-color: black;
+}
+.drag:not(#drag6) {
+  position: relative;
+  height: 100%;
+  background-color: magenta;
+  float: left;
+  width: 30px;
+}
+.small {
+  zwidth: 30px;
+}
+.large {
+  zwidth: 500px;
+}
+.small .handler div,
+.small .handler input,
+.small .handler select {
+  display:none;
+}
+.handler {
+  background-color: #eee;
+  position: absolute;
+  background-color: magenta;
+  cursor: pointer;
+  z-index: 1;
+}
+.small .handler,
+.large .handler {
+  width: 30px;
+  height: 100%;
+}
+.handler span {
+  display: block; 
+  white-space: nowrap;
+  position: absolute;
+  text-transform: uppercase;
+  font-size: 38px;
+  width: 100%;
+  left: -1px;
+}
+.small .handler span,
+.large .handler span {
+  bottom: 0px;
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.handler:hover span {
+  bottom: 60px;
+  -webkit-transition: bottom 300ms linear;
+  -moz-transition: bottom 300ms linear;
+  -o-transition: bottom 300ms linear;
+  -ms-transition: bottom 300ms linear;
+  transition: bottom 300ms linear;
+}
+.top-spacer {
+  height: 0px;
+}
+#api6 .top-spacer {
+  height: 5px;
+}
+.api {
+  overflow: auto;
+}
+.small .api {
+  overflow: hidden;
+}
+.api:not(#api6) {
+  height: 100%;
+  width: 100%;
+  padding-left: 30px;
+}
+.api:not(#api1){
+  -webkit-overflow-scrolling:touch;
+}
+#api4, #api16, #api6 {
+  overflow: hidden;
+}
+#drag6 .handler {
+  display: none;
+}
+
+#drag3 .handler {
+  background-image: url("./img/icons/Folder.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+#drag7 .handler {
+  background-image: url("./img/icons/Folder3.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+#drag14 .handler {
+  background-image: url("./img/icons/Search32.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+#drag2 .handler {
+  background-image: url("./img/icons/Tree.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+#drag5 .handler {
+  background-image: url("./img/icons/Document2.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+#drag4 .handler {
+  background-image: url("./img/icons/Picture.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+#drag16 .handler {
+  background-image: url("./img/icons/Poll.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+#drag12 .handler {
+  background-image: url("./img/icons/Applications.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+#drag11 .handler {
+  background-image: url("./img/icons/Man.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+#drag13 .handler {
+  background-image: url("./img/icons/Tool.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+#drag10 .handler {
+  background-image: url("./img/icons/Question.gif");
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+/*colors*/
+#drag3 .handler,
+#drag3 .api {
+  background-color: green;
+}
+#drag7 .handler,
+#drag7 .api {
+  background-color: red;
+}
+#drag14 .handler,
+#drag14 .api {
+  background-color: blue;
+}
+#drag2 .handler,
+#drag2 .api {
+  background-color: orangered;
+}
+#drag5 .handler,
+#drag5 .api {
+  background-color: indigo;
+}
+#drag4 .handler,
+#drag4 .api {
+  background-color: orange;
+}
+#drag16 .handler,
+#drag16 .api {
+  background-color: purple;
+}
+#drag12 .handler,
+#drag12 .api {
+  background-color: gray;
+}
+#drag11 .handler,
+#drag11 .api {
+  background-color: darkgreen;
+}
+#drag13 .handler,
+#drag13 .api {
+  background-color: darkblue;
+}
+#drag10 .handler,
+#drag10 .api {
+  background-color: olive;
+}
+
+
+/*player*/
+#jquery_jplayer_1 {
+  display: none;
+}
+.jp-previous, .jp-play, .jp-pause, .jp-next {
+  float: left;
+  cursor: pointer;
+  background-color: #000;
+  height: 50px;
+  text-align: center;
+  width: 100px;  
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.jp-mute,
+.jp-unmute {
+  display: none;
+}
+.jp-previous:hover,
+.jp-play:hover,
+.jp-pause:hover,
+.jp-next:hover {
+  background-color: orangered;
+}
+.jp-previous {
+  background-image: url("./img/icons/Player Previous.gif");
+}
+.jp-play {
+  background-image: url("./img/icons/Player Play.gif");
+}
+.jp-pause {
+  background-image: url("./img/icons/Player Pause.gif");
+}
+.jp-next {
+  background-image: url("./img/icons/Player Next.gif");
+}
+.jp-stop {
+  background-image: url("./img/icons/Player Stop.gif");
+}
+.jp-mute {
+  background-image: url("./img/icons/Sound On.gif");
+}
+.jp-unmute {
+  background-image: url("./img/icons/Sound Off.gif");
+}
+
+/*Player*/
+.jp-current-time {
+  overflow: hidden;
+  float: left;
+  line-height: 50px;
+  padding-left: 5px;
+}
+.jp-duration {
+  overflow: hidden;
+  float: left;
+  line-height: 50px;
+}
+.jp-progress-title { 
+  overflow: hidden;
+  padding: 0px 10px;
+  line-height: 50px;
+}
+.jp-duration:before {
+   content: "/";
+   padding: 2px;
+}
+.jp-bar {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 5px;  
+  background-color: #000;
+  z-index: 1;
+}
+.jp-volume-bar {
+  display: none;
+}
+.jp-play-bar,
+.jp-seek-bar,
+.jp-buffer-bar {
+  position: absolute;
+  display: block;
+  height: 100%;
+}
+.jp-play-bar {
+  background-color: orangered; 
+  z-index: 3;
+}
+.jp-buffer-bar {
+  background-color: #444;
+  z-index: 2;
+}
+.jp-seek-bar {
+  background-color: #666;
+  z-index: 1;
+}
+
+/*table, lists*/
+.masterDirectory,
+.directory,
+.license_link {
+  margin-bottom: 30px;
+}
+li {
+  clear: both;
+}
+.directory {
+  display: block;
+  min-height: 20px;
+}
+
+ul {
+  padding: 0;
+}
+li {
+  list-style-type: none;
+}
+ul div, li div {
+  float: left;
+}
+.ui-state-highlight {
+  height: 1.3em; 
+  line-height: 1.0em;
+}
+table, ul {
+  clear: both;
+}
+li {
+  border-bottom: 1px solid #aaa;
+}
+table:not(.dump):not(.login) {
+  border-spacing: 0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+table:not(.dump) tr:hover,
+li:hover {
+  background: rgba(0,0,0,0.2); 
+}       
+table:not(.dump) th {
+  background-color: rgba(0,0,0,0.2);
+  border-top: none;
+  font-weight: normal;
+  padding: 3px;
+  text-align: left;    
+}
+table:not(.dump) td {
+  border-top: 1px solid rgba(0,0,0,0.6);
+  text-align: left;    
+  /* padding: 3px; */
+}
+table:not(.dump) tr:nth-child(1) td {
+  border: none;
+}
+table input[type="text"],
+table input[type="password"],
+table select {
+  /* width: 100%; */
+}
+.dump {
+  border-spacing: 2px;
+}
+.dump td {
+  border: 1px solid #aaa;
+  padding: 2px;
+  font-size: 14px;
+}
+.logging td{
+  font-size: 14px;  
+} 
+/*buttons, ...*/
+.close-popup {
+  display: none;
+}
+.back div{
+  float: left;
+}
+.action {
+  display: none;
+}
+.copy div,
+.update div,
+.delete div,
+.add div,
+.play div,
+.info div,
+.move div,
+.back div {
+  padding: 0px 3px 0px 3px;
+  cursor: pointer;
+  margin-right: 1px;
+  color: #ccc;
+  margin-top: 0px;
+}
+.copy div:hover,
+.update div:hover,
+.delete div:hover,
+.add div:hover,
+.play div:hover,
+.info div:hover,
+.move div:hover,
+.back div:hover {
+  color: #fff;
+  background: rgba(0,0,0,0.4); 
+}
+.close-popup:hover {
+  color: #000;  
+}
+.refresh,
+.search,
+.getID3,
+input[type="button"] {
+  text-transform: lowercase;
+  cursor: pointer;
+  border: 2px outset buttonface;
+  display: inline-block; 
+  padding: 2px;
+  margin: 2px 2px;
+  background-color: initial;
+  color: inherit;
+}
+.refresh:hover,
+.search:hover,
+.getID3:hover,
+input[type="button"]:hover {
+  background: rgba(0,0,0,0.4); 
+}
+.radio-playlist {
+  position: relative;
+  width: 50px;
+  top: 55px;
+  right: 10px;
+  background: rgba(0,0,0,0.2); 
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.shuffle-playlist {
+  position: relative;
+  width: 50px;
+  top: 100px;
+  right: 10px;
+  background: rgba(0,0,0,0.2); 
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.clear-playlist {
+  position: relative;
+  width: 50px;
+  top: 140px;
+  right: 10px;
+  background: rgba(0,0,0,0.2); 
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.radio-playlist div,
+.clear-playlist div,
+.shuffle-playlist {
+  cursor: pointer;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.radio-on div {
+  background-color: rgba(0,0,0,0.6);
+}
+li.jp-playlist-current,
+.highlighted,
+.changed {
+  background: rgba(0,0,0,0.4);
+}
+.cover-album,
+.cover-now-playing  {
+  cursor: pointer;
+  border: none;
+}
+#largeAlbumCoverImage {
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+}
+.ajax-loader {
+  width: 16px;
+  height: 16px;
+  background: url('./img/ajax-loader.gif');
+}
+.uparrow {
+  background: url('./img/uparrow.gif');
+  cursor: pointer;
+  width: 48px;
+  height: 40px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: none;
+  opacity: 0.3;
+}
+.uparrow:hover {
+  opacity: 0.8;
+}
+#visualisation {
+  overflow: hidden;
+}
+#visualisation > div {
+  padding: 5px;
+}
+#spectrocanvas {
+  background-color: black;
+}
+#visualSelect {
+  position: absolute;
+  margin: 6px 0px 0px 32px;
+  padding: 0px;
+  font-size: 14px;
+}
+#visualScale {
+  position: absolute;
+  margin: 10px 5px 0px 140px;
+  height: 12px;
+}
+
+.jp-previous div,
+.jp-play div,
+.jp-pause div,
+.jp-next div {  
+  visibility: hidden;
+}
+
+/*css rules depending on screen width*/
+@media screen and (min-width:1025px){
+
+.jp-previous div,
+.jp-play div,
+.jp-pause div,
+.jp-next div {  
+  visibility: visible;
+}
+.jp-previous,
+.jp-play,
+.jp-pause,
+.jp-next {  
+  text-transform: lowercase;
+  background-image: none;
+  line-height: 50px;  
+}
+
+
+}
+
+@media only screen and (max-width:640px) {
+
+#drag3, #drag7, #drag14, #drag2, #drag5, #drag4, #drag8, #drag9, #drag10, #drag11, #drag13, #drag12, #drag15, #drag16 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+}
+
+/* Force table to not be like tables anymore */
+table, 
+thead, 
+tbody, 
+th, 
+td, 
+tr { 
+  display: block; 
+} 
+/* Hide table headers */
+tr:first-child { 
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+} 
+tr { 
+  border: 1px solid #ccc; 
+} 
+/* Behave  like a "row" */
+table:not(.dump) td { 
+  border: none;
+  border-bottom: 1px solid #eee; 
+  position: relative;
+  padding-left: 100px; 
+  white-space: normal;
+  text-align: left; 
+}
+ 
+td:before { 
+  /* Now like a table header */
+  position: absolute;
+  /* Top/left values mimic padding */
+  top: 3px;
+  left: 5px;
+  padding-right: 10px; 
+  white-space: nowrap;
+  text-align: left;
+  /*Label the data*/
+  content: attr(row-title);
+}
+td div {
+  display: inline;
+}
+
+}
+  content: attr(row-title);
+}
+td div {
+  display: inline;
+}
+
+}

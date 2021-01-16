@@ -1,0 +1,2 @@
+Material design, extracts colors from the artwork of the playing song.
+<br />Uses Vibrant: <a href="https://jariz.github.io/vibrant.js" target="_blank">https://jariz.github.io/vibrant.js</a>

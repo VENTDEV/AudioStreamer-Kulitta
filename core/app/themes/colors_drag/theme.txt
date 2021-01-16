@@ -1,0 +1,2 @@
+Colorful theme. Portlets can be resized and dragged around.
+<br />Possible to save your newly created portlet lay-out.

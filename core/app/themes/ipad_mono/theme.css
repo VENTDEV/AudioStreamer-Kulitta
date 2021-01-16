@@ -1,0 +1,705 @@
+html, body, #content {
+  width: 100%;
+  height: 100%;  
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;          
+          box-sizing: border-box;
+}
+body {
+  font-family: Tahoma, Arial;
+  font-size: 16px;
+  padding: 50px 0px 55px 0px;
+}
+#content {
+  position: relative;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+img {
+  border: none;
+/*  vertical-align: top;*/ /*important, otherwise 5px gap at bottom*/ /*apparently solved in IE11 current version*/
+}
+input,
+input[type="checkbox"],
+select {
+  margin-right: 1px;
+  padding: 1px 0px;
+  font-family: Tahoma, Arial;
+  font-size: 16px;
+}
+input[type="checkbox"] {
+  margin-left: 5px;
+}
+.description {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 110%;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+.iframe-style{
+  padding: 0px;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: #000;
+}
+.license_link {
+  font-size: 12px;
+  font-style: italic;
+  clear: both;
+}
+/*paddings*/
+.api:not(#api1):not(#api6):not(#api5):not(#api4):not(#api16):not(#api17) {
+  padding: 5px 5px;
+}
+
+/*portlets*/
+.drag {
+  display: none;
+}
+#drag1, #drag6, #drag3, #drag2 {
+  display: block;
+}
+#drag1 {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  height: 50px;
+  overflow: hidden;
+}
+#drag6 {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  height: 55px;
+  overflow: hidden;
+  background-color: #eee;
+}
+#drag3, #drag7, #drag14 {
+  position: absolute;
+  height: 100%;
+  width: 25%;
+  left: 0px;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+}
+#drag2, #drag5, #drag4, #drag8, #drag9, #drag10, #drag11, #drag13, #drag12, #drag15, #drag16 {
+  position: absolute;
+  height: 100%;
+  width: 75%;
+  right: 0px;
+  background-color: #fff;
+}
+.handler {
+  width: 100%;
+  background-color: #eee;
+  text-transform: lowercase;
+  position: absolute;
+  height: 5px;
+  z-index: 1;
+  background-color: #ccc;
+}
+.handler span,
+.handler .close-popup {
+  display: none;
+}
+.top-spacer {
+  height: 5px;
+}
+.api {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+#api1, #api4, #api16, #api6 {
+  overflow: hidden;
+}
+#api1 {
+  background-color: #eee;
+}
+.api:not(#api1){
+  -webkit-overflow-scrolling:touch;
+}
+#drag1 .handler {
+  display: none;
+}
+#drag1 .top-spacer {
+  height: 0px;
+}
+
+/*player*/
+#jquery_jplayer_1 {
+  display: none;
+}
+.jp-previous, .jp-play, .jp-pause, .jp-next {
+  float: left;
+  cursor: pointer;
+  background-color: #eee;
+  height: 50px;
+  text-align: center;
+  width: 8.33%;  
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.jp-mute,
+.jp-unmute {
+  display: none;
+}
+.jp-previous:hover,
+.jp-play:hover,
+.jp-pause:hover,
+.jp-next:hover {
+  background-color: #ccc;
+}
+.jp-previous {
+  background-image: url("./img/icons/Player Previous.gif");
+}
+.jp-play {
+  background-image: url("./img/icons/Player Play.gif");
+}
+.jp-pause {
+  background-image: url("./img/icons/Player Pause.gif");
+}
+.jp-next {
+  background-image: url("./img/icons/Player Next.gif");
+}
+.jp-stop {
+  background-image: url("./img/icons/Player Stop.gif");
+}
+.jp-mute {
+  background-image: url("./img/icons/Sound On.gif");
+}
+.jp-unmute {
+  background-image: url("./img/icons/Sound Off.gif");
+}
+/*Player*/
+.jp-current-time {
+  overflow: hidden;
+  float: left;
+  line-height: 50px;
+  padding-left: 5px;
+}
+.jp-duration {
+  overflow: hidden;
+  float: left;
+  line-height: 50px;
+}
+.jp-progress-title { 
+  overflow: hidden;
+  padding: 0px 10px;
+  line-height: 50px;
+}
+.jp-duration:before {
+   content: "/";
+   padding: 2px;
+}
+.jp-bar {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 5px;  
+  background-color: #ccc;
+  z-index: 1;
+}
+.jp-volume-bar {
+  display: none;
+}
+.jp-play-bar,
+.jp-seek-bar,
+.jp-buffer-bar {
+  position: absolute;
+  display: block;
+  height: 100%;
+}
+.jp-play-bar {
+  background-color: #666; 
+  z-index: 3;
+}
+.jp-buffer-bar {
+  background-color: #888;
+  z-index: 2;
+}
+.jp-seek-bar {
+  background-color: #aaa;
+  z-index: 1;
+}
+
+
+/*Menu*/
+.showPlayer,
+.desktop-save,
+.desktop-save-as,
+.view-song-info,
+.view-logging,
+.view-create-database {
+  display: none;
+}
+.showPlayer,
+.showTree,
+.showAlbums,
+.showSearch,
+.view-albums,
+.view-song-info,
+.view-playlist,
+.view-now-playing,
+.freq-spectrum,
+.desktop-save,
+.desktop-save-as,
+.desktop-manage,
+.users,
+.settings,
+.view-logging,
+.view-create-database,
+.about-AudioStreamer,
+.logout,
+.view-menu {
+  float: left;
+  cursor: pointer;
+  background-color: #eee;
+  height: 100%;
+  text-align: center;
+  width: 8.33%; 
+}
+.showPlayer:hover,
+.showTree:hover,
+.showAlbums:hover,
+.showSearch:hover,
+.view-albums:hover,
+.view-song-info:hover,
+.view-playlist:hover,
+.view-now-playing:hover,
+.freq-spectrum:hover,
+.desktop-save:hover,
+.desktop-save-as:hover,
+.desktop-manage:hover,
+.users:hover,
+.settings:hover,
+.view-logging:hover,
+.view-create-database:hover,
+.about-AudioStreamer:hover,
+.logout:hover,
+.view-menu:hover {
+  background-color: #ccc;
+}
+
+.showPlayer,
+.showTree div,
+.showAlbums div,
+.showSearch div,
+.view-albums div,
+.view-playlist div,
+.view-now-playing div,
+.view-song-info,
+.view-logging,
+.view-create-database,
+.view-albums div,
+.view-playlist div,
+.view-now-playing div,
+.freq-spectrum div,
+.desktop-save div,
+.desktop-save-as div,
+.desktop-manage div,
+.users div,
+.settings div, 
+.logout div,
+.about-AudioStreamer div,
+.jp-previous div,
+.jp-play div,
+.jp-pause div,
+.jp-next div,
+.jp-mute div,
+.jp-unmute div{  
+  visibility: hidden;
+}
+.showTree,
+.showAlbums,
+.showSearch,
+.view-albums,
+.view-playlist,
+.view-now-playing,
+.freq-spectrum,
+.desktop-save,
+.desktop-save-as,
+.desktop-manage,
+.users,
+.settings, 
+.logout,
+.about-AudioStreamer {
+  background-repeat: no-repeat;  
+  background-position: center;
+}
+.showTree {
+  background-image: url("./img/icons/Folder.gif");
+}
+.showAlbums {
+  background-image: url("./img/icons/Folder3.gif");
+}
+.showSearch {
+  background-image: url("./img/icons/Search32.gif");
+}
+.view-albums {
+  background-image: url("./img/icons/Tree.gif");
+}
+.view-playlist {
+  background-image: url("./img/icons/Document2.gif");
+}
+.view-now-playing {
+  background-image: url("./img/icons/Picture.gif");
+}
+.freq-spectrum {
+  background-image: url("./img/icons/Poll.gif");
+}
+.desktop-save {
+  background-image: url("./img/icons/Save.gif");
+}
+.desktop-save-as {
+  background-image: url("./img/icons/Clipboard Copy.gif");
+}
+.desktop-manage {
+  background-image: url("./img/icons/Applications.gif");
+}
+.users{
+  background-image: url("./img/icons/Man.gif");
+}
+.settings{
+  background-image: url("./img/icons/Tool.gif");
+}
+.logout {
+  background-image: url("./img/icons/Go Out.gif");
+}
+.about-AudioStreamer {
+  background-image: url("./img/icons/Question.gif");
+}
+
+/*table, lists*/
+.masterDirectory,
+.directory,
+.license_link {
+  margin-bottom: 30px;
+}
+li {
+  clear: both;
+}
+.directory {
+  display: block;
+  min-height: 20px;
+}
+ul {
+  padding: 0;
+}
+li {
+  list-style-type: none;
+}
+ul div, li div {
+  float: left;
+}
+.ui-state-highlight {
+  height: 1.3em; 
+  line-height: 1.0em;
+}
+table, ul {
+  clear: both;
+}
+li {
+  border-bottom: 1px solid #aaa;
+}
+table:not(.dump):not(.login) {
+  border-spacing: 0;
+  border: solid #aaa 1px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+table:not(.dump) tr:hover,
+li:hover {
+  background: #eee;
+}       
+table:not(.dump) th {
+  background-color: #eee;
+  border-top: none;
+  font-weight: normal;
+  padding: 3px;
+  text-align: left;    
+}
+table:not(.dump) td {
+  border-top: 1px solid #aaa;
+  text-align: left;    
+  /* padding: 3px; */
+}
+table:not(.dump) tr:nth-child(1) td {
+  border: none;
+}
+table input[type="text"],
+table input[type="password"],
+table select {
+  /* width: 100%; */
+}
+.dump {
+  border-spacing: 2px;
+}
+.dump td {
+  border: 1px solid #aaa;
+  padding: 2px;
+  font-size: 14px;
+}
+.logging td{
+  font-size: 14px;  
+} 
+/*buttons, ...*/
+.close-popup {
+  cursor: pointer;
+  border-radius: 3px;
+  margin-right: 1px;
+  color: #ccc;
+}
+.back div{
+  float: left;
+}
+.action {
+  display: none;
+}
+.copy div,
+.update div,
+.delete div,
+.add div,
+.play div,
+.info div,
+.move div,
+.back div {
+  padding: 0px 3px 0px 3px;
+  cursor: pointer;
+  margin-right: 1px;
+  color: #aaa;
+  margin-top: 0px;
+}
+.copy div:hover,
+.update div:hover,
+.delete div:hover,
+.add div:hover,
+.play div:hover,
+.info div:hover,
+.move div:hover,
+.back div:hover {
+  color: #fff;
+  background-color: #aaa;
+}
+.close-popup:hover {
+  color: #000;  
+}
+.refresh,
+.search,
+.getID3,
+input[type="button"] {
+  text-transform: lowercase;
+  cursor: pointer;
+  border: 2px outset buttonface;
+  background-color: #eee;
+  display: inline-block; 
+  padding: 2px;
+  margin: 2px 2px;
+}
+.refresh:hover,
+.search:hover,
+.getID3:hover,
+input[type="button"]:hover {
+  box-shadow: inset 0 32px 0px rgba(0,0,0,0.1);  
+}
+
+.radio-playlist {
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  background-color: #eee;
+}
+.shuffle-playlist {
+  position: absolute;
+  top: 5px;
+  right: 45px;
+  background-color: #eee;
+}
+.clear-playlist {
+  position: absolute;
+  top: 5px;
+  right: 100px;
+  background-color: #eee;
+}
+.radio-playlist div,
+.clear-playlist div,
+.shuffle-playlist div{
+  cursor: pointer;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.radio-on div {
+  background-color: #ccc;
+  color: #000;
+}
+li.jp-playlist-current,
+.highlighted,
+.changed {
+  background-color: #eee;
+  color: #000;
+}
+.cover-album,
+.cover-now-playing  {
+  cursor: pointer;
+  border: none;
+}
+#largeAlbumCoverImage {
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+}
+.ajax-loader {
+  width: 16px;
+  height: 16px;
+  background: url('./img/ajax-loader.gif');
+}
+.uparrow {
+  background: url('./img/uparrow.gif');
+  cursor: pointer;
+  width: 48px;
+  height: 40px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: none;
+  opacity: 0.3;
+}
+.uparrow:hover {
+  opacity: 0.8;
+}
+#visualisation {
+  overflow: hidden;
+}
+#visualisation > div {
+  padding: 5px;
+}
+#spectrocanvas {
+  background-color: black;
+}
+#visualSelect {
+  margin: 6px 0px 0px 0px;
+  padding: 0px;
+  font-size: 14px;
+}
+#visualScale {
+  margin: 10px 5px 0px 5px;
+  height: 12px;
+}
+
+/*css rules depending on screen width*/
+@media screen and (min-width:1025px){
+
+.showTree div,
+.showAlbums div,
+.showSearch div,
+.view-albums div,
+.view-playlist div,
+.view-now-playing div,
+.view-albums div,
+.view-playlist div,
+.view-now-playing div,
+.freq-spectrum div,
+.desktop-manage div,
+.users div,
+.settings div, 
+.logout div,
+.about-AudioStreamer div,
+.jp-previous div,
+.jp-play div,
+.jp-pause div,
+.jp-next div {  
+  visibility: visible;
+}
+.showTree,
+.showAlbums,
+.showSearch,
+.view-albums,
+.view-playlist,
+.view-now-playing,
+.freq-spectrum,
+.desktop-save,
+.desktop-save-as,
+.desktop-manage,
+.users,
+.settings, 
+.logout,
+.about-AudioStreamer,
+.jp-previous,
+.jp-play,
+.jp-pause,
+.jp-next {  
+  font-size: 20px;
+  color: #000;
+  padding: 9px 0px 0px 0px;
+  text-transform: lowercase;
+  background-image: none;
+}
+
+
+}
+
+@media only screen and (max-width:640px) {
+
+#drag3, #drag7, #drag14, #drag2, #drag5, #drag4, #drag8, #drag9, #drag10, #drag11, #drag13, #drag12, #drag15, #drag16 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+}
+
+/* Force table to not be like tables anymore */
+table, 
+thead, 
+tbody, 
+th, 
+td, 
+tr { 
+  display: block; 
+} 
+/* Hide table headers */
+tr:first-child { 
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+} 
+tr { 
+  border: 1px solid #ccc; 
+} 
+/* Behave  like a "row" */
+table:not(.dump) td { 
+  border: none;
+  border-bottom: 1px solid #eee; 
+  position: relative;
+  padding-left: 100px; 
+  white-space: normal;
+  text-align: left; 
+}
+ 
+td:before { 
+  /* Now like a table header */
+  position: absolute;
+  /* Top/left values mimic padding */
+  top: 3px;
+  left: 5px;
+  padding-right: 10px; 
+  white-space: nowrap;
+  text-align: left;
+  /*Label the data*/
+  content: attr(row-title);
+}
+td div {
+  display: inline;
+}
+
+}

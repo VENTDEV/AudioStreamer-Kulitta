@@ -1,0 +1,270 @@
+/*
+html, body {
+  width: 100%;
+  height: 100%;  
+}
+*/
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+}
+body {
+  font-family: Tahoma, Arial;
+  font-size: 1em;
+  color: #000;
+}
+a {
+  color: #000;
+  text-decoration: underline;
+  font-size: 1em;
+}
+img {
+  border: none;
+  vertical-align: top; /*important, otherwise 5px gap at bottom*/
+}
+input,
+input[type="checkbox"],
+select {
+  margin: 1px;
+  padding: 1px 0px;
+  font-size: 1.0em;
+}
+input[type="checkbox"] {
+  margin-left: 5px;
+}
+.description {
+  font-style: italic;
+  font-size: 0.9em;
+  line-height: 110%;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+.iframe-style{
+  padding: 0px;
+  border: 0;
+  width: 100%;
+  height: 99%;
+}
+.license_link {
+  font-size: 0.7em;
+  font-style: italic;
+  clear: both;
+}
+
+/*portlets*/
+.drag {
+  position: relative;
+  display: none;
+  clear: both;
+  height: 100%;
+  margin: 5px;
+  border: 1px solid #000;
+}
+#drag1, #drag6 {
+  display: block;
+}
+.handler {
+  position: absolute;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+}
+.close-popup {
+  display: none;  
+}
+.top-spacer {
+  height: 35px;
+}
+.api {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+#api4, #api16 {
+  overflow: hidden;
+}
+
+/*player*/
+.jp-previous, 
+.jp-play, 
+.jp-pause, 
+.jp-next,
+.jp-current-time,
+.jp-duration,
+.as-duration,
+.jp-progress-title {
+  cursor: pointer;
+  float: left;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.jp-mute,
+.jp-unmute {
+  cursor: pointer;
+  float: right;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+/*jPlayer*/
+/*Firefox shows a black bar, so height:0px*/
+.jp-jplayer {
+  height: 0px;
+}
+.jp-seeking-bg {
+  background-image: url("./img/pbar-ani.gif");
+  background-size: contain;
+}
+.as-duration {
+  display: none;
+}  
+.jp-seek-bar {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  height: 5px;
+  background-color: #000;  
+}
+.jp-play-bar,
+.as-play-bar {
+  height: 100%;  
+  background-color: #fff; 
+}
+.as-play-bar {
+  display: none;
+}
+.jp-volume-bar {
+  display: none;
+}
+
+/*menu*/
+.showPlayer,
+.view-song-info,
+.view-logging,
+.view-create-database,
+.desktop-save,
+.desktop-save-as {
+  display: none;
+}
+.showTree,
+.showAlbums,
+.showSearch,
+.view-albums,
+.view-song-info,
+.view-playlist,
+.view-now-playing,
+.freq-spectrum,
+.desktop-save,
+.desktop-save-as,
+.desktop-manage,
+.users,
+.settings,
+.view-logging,
+.view-create-database,
+.about-AudioStreamer {
+  cursor: pointer;
+  float: left;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.logout {
+  cursor: pointer;
+  float: right;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+/*table, lists*/
+ul {
+  padding: 0;
+}
+li {
+  list-style-type: none;
+  display: table;
+  border-bottom: 1px solid #c1c1c1;
+}
+ul div, li div {
+  float: left;
+}
+.ui-state-highlight {
+  height: 1.3em; 
+  line-height: 1.0em;
+}
+table, ul {
+  clear: both;
+}
+table, td, th {
+  border: 1px solid #000;
+}
+
+/*buttons, ...*/
+.copy div,
+.update div,
+.delete div,
+.add div,
+.play div,
+.info div,
+.move div,
+.close-popup,
+.back div,
+.refresh,
+.search,
+.getID3 {
+  padding: 1px 2px 1px 2px;
+  cursor: pointer;
+  margin-right: 1px;
+}
+
+.radio-playlist {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.clear-playlist {
+  position: absolute;
+  top: 0px;
+  right: 50px;
+}
+.radio-playlist div,
+.clear-playlist div{
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+li.jp-playlist-current,
+.radio-on div,
+.highlighted,
+.changed {
+  background-color: #ffd500;
+}
+.radio-on div {
+  color: #000;
+}
+.cover-album,
+.cover-now-playing  {
+  cursor: pointer;
+  border: none;
+}
+#largeAlbumCoverImage {
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+}
+#visualisation {
+  overflow: hidden;
+}
+#visualisation > div {
+  padding: 5px;
+}
+#spectrocanvas {
+  background-color: black;
+}
+#visualSelect {
+  margin: 0px;
+  padding: 0px;
+  font-size: 0.9em;
+  float: right;
+}

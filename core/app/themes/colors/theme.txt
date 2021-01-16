@@ -1,0 +1,2 @@
+Colorful fixed theme.
+<br/ > Takes full width of the browser.
