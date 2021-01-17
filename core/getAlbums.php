@@ -22,7 +22,31 @@
   $sort = $_GET["sort"];
   $cnt = 0;
   
+// Call this at each point of interest, passing a descriptive string
+function prof_flag($str)
+{
+    global $prof_timing, $prof_names;
+    $prof_timing[] = microtime(true);
+    $prof_names[] = $str;
+}
+
+// Call this when you're done and want to see the results
+function prof_print()
+{
+    global $prof_timing, $prof_names;
+    $size = count($prof_timing);
+    for($i=0;$i<$size - 1; $i++)
+    {
+        echo "<b>{$prof_names[$i]}</b><br>";
+        echo sprintf("&nbsp;&nbsp;&nbsp;%f<br>", $prof_timing[$i+1]-$prof_timing[$i]);
+    }
+    echo "<b>{$prof_names[$size-1]}</b><br>";
+}
+
+
+
   try {
+
     $dbh = new PDO("sqlite:".$sdb);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); 
 
@@ -37,7 +61,33 @@
       $sort = 'a.file_modified desc';
     }
     
-    $output = $output. '<ul id="tree">';
+      
+  echo "<div class=\"top-spacer\"></div>
+              <input type=\"text\" class=\"scrollfield\" name=\"scrollfield\" placeholder=\"scroll to\" onKeyUp=\"scrollFocusWrap(this)\" onClick=\"$(\'#scrollfield\').select()\" value=\"\"> <form action=\"\" id=\"search-form\" onSubmit=\"getAlbums($(\'#api7 #genre\').val(),$(\'#api7 #sort:checked\').val());return false;\">";   
+    
+    //create select list
+    echo "<select id=\"genre\" name=\"genre\" onChange=\"getAlbums($(\'#api7 #genre\').val(),$(\'#api7 #sort:checked\').val())\"><option>all genres</option>";
+
+    $sql = "select genre from genre order by genre collate nocase";
+    foreach ($dbh->query($sql) as $row) {
+        if ($genre==$row['genre']) {
+            echo "<option selected>".$row['genre']."</option>";
+        }
+        else{
+            echo "<option>".$row['genre']."</option>";
+        }
+    }   
+    echo "</select>";
+  
+    //create input sort
+   echo '<input type="checkbox" id="sort" name="sort" onClick="getAlbums($(\'#api7 #genre\').val(),$(\'#api7 #sort:checked\').val())" value="modified" title="Sort descending on date modified" ';
+    if ($sort == "a.file_modified desc") {
+      echo ' checked';    
+    }  
+    echo '/>';   
+ 
+    echo '<ul id="tree">';
+
     $sql = "select a.id, a.filename as album, b.filename as artist, a.file_modified 
             from music a,
                  music b
@@ -56,57 +106,34 @@
       $sql = $sql."
               order by ".$sort;
     }
+    
+   foreach ($dbh->query($sql) as $row) {   
+    $cnt = $cnt+1;
+   }
+   
+   echo '<div class="total">(Total albums: '.$cnt.')</div> </form>';
 
     //echo '<br/>'.$sql;
     foreach ($dbh->query($sql) as $row) {
-      $output = $output.'<li><a href="#" onClick="getDirectory('.$row['id'].')"';
-      $output = $output.' title="'.utf8_encode_AS($row['artist']).' - '.utf8_encode_AS($row['album']);
       if ($sort != ""){
-        $output = $output.' ('.$row['file_modified'].')';
-      }
-      $output = $output.'">'.utf8_encode_AS($row['artist']).' - '.utf8_encode_AS($row['album']).'</a></li>';
-      $cnt = $cnt + 1;
-    }   
-    $output = $output. '</ul>';
-
-    //create select list
-    $select_list = '<select id="genre" name="genre" onChange="getAlbums($(\'#api7 #genre\').val(),$(\'#api7 #sort:checked\').val())"><option>all genres</option>';
-    $sql = "select genre from genre order by genre collate nocase";
-    foreach ($dbh->query($sql) as $row) {
-      if ($genre==$row['genre']) {
-        $select_list = $select_list.'<option selected>'.$row['genre'].'</option>';
+        echo '<li><a href="#" onClick="getDirectory('.$row['id'].')" title="'.utf8_encode_AS($row['artist']).' - '.utf8_encode_AS($row['album']).' ('.$row['file_modified'].')">'.utf8_encode_AS($row['artist']).' - '.utf8_encode_AS($row['album']).'</a></li>';        
       }
       else{
-        $select_list = $select_list.'<option>'.$row['genre'].'</option>';
-      }
+         echo '<li><a href="#" onClick="getDirectory('.$row['id'].')" title="'.utf8_encode_AS($row['artist']).' - '.utf8_encode_AS($row['album']).'">'.utf8_encode_AS($row['artist']).' - '.utf8_encode_AS($row['album']).'</a></li>';
+      }      
+      
     }   
-    $select_list = $select_list. '</select>';
-    
-    //create input sort
-    $input_sort = '<input type="checkbox" id="sort" name="sort" onClick="getAlbums($(\'#api7 #genre\').val(),$(\'#api7 #sort:checked\').val())" value="modified" title="Sort descending on date modified" ';
-    if ($sort == "a.file_modified desc") {
-      $input_sort = $input_sort.' checked';    
-    }  
-    $input_sort = $input_sort.'/>';    
 
-    //include totals
-    $output = '<div class="top-spacer"></div>'.
-              '<input type="text" class="scrollfield" name="scrollfield" placeholder="scroll to" onKeyUp="scrollFocusWrap(this)" onClick="$(\'#scrollfield\').select()" value="">'.     
-              '<form action="" id="search-form" onSubmit="getAlbums($(\'#api7 #genre\').val(),$(\'#api7 #sort:checked\').val());return false;">'.
-              $select_list.
-              $input_sort.
-              '<div class="total">(Total albums: '.$cnt.')</div>'.
-              '</form>'.
-              $output;
-     
+echo '</ul>';
+        
     //close connection
     $dbh = null;
   }
   catch(PDOException $e)
   {
-    $output = $output.'<br/>'.$e->getMessage();
+    echo '<br/>'.$e->getMessage();
   }  
 
-  echo $output;
-
+  echo "<br><br>";
+//prof_print();
 ?> 
