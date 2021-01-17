@@ -1,5 +1,4 @@
 <?php
-
 /////////////////////////////////////////////////////////////////
 /// getID3() by James Heinrich <info@getid3.org>               //
 //  available at https://github.com/JamesHeinrich/getID3       //
@@ -8,8 +7,9 @@
 //  see readme.txt for more details                            //
 /////////////////////////////////////////////////////////////////
 //                                                             //
-// module.misc.pdf.php                                         //
-// module for analyzing PDF files                              //
+// module.audio.wtv.php                                        //
+// module for analyzing WTV (Windows Recorded TV Show)         //
+//   audio-video files                                         //
 // dependencies: NONE                                          //
 //                                                            ///
 /////////////////////////////////////////////////////////////////
@@ -18,7 +18,7 @@ if (!defined('GETID3_INCLUDEPATH')) { // prevent path-exposing attacks that acce
 	exit;
 }
 
-class getid3_pdf extends getid3_handler
+class getid3_wtv extends getid3_handler
 {
 	/**
 	 * @return bool
@@ -26,11 +26,12 @@ class getid3_pdf extends getid3_handler
 	public function Analyze() {
 		$info = &$this->getid3->info;
 
-		$info['fileformat'] = 'pdf';
+		$info['fileformat']          = 'wtv';
+		$info['video']['dataformat'] = 'wtv';
 
-		$this->error('PDF parsing not enabled in this version of getID3() ['.$this->getid3->version().']');
-		return false;
+		$this->error('WTV (Windows Recorded TV Show) files not properly processed by this version of getID3() ['.$this->getid3->version().']');
 
+		return true;
 	}
 
 }
