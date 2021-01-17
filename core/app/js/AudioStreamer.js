@@ -1881,7 +1881,7 @@ function initWebAudioApi() {
           freqctx.fillStyle = '#90ff00';
         } else if (dynamic <= 13) {
           freqctx.fillStyle = '#48ff00';
-        } else if (dynamic => 14) {
+        } else if (dynamic >= 14) {
           freqctx.fillStyle = '#00ff00';
         //} else {
         //  freqctx.fillStyle = "#"+dynaRange.colourAt( ((dynamic-8 )/8) * 100 );
@@ -2080,7 +2080,7 @@ function initWebAudioApi() {
           freqctx.fillStyle = '#90ff00';
         } else if (dynamic <= 13) {
           freqctx.fillStyle = '#48ff00';
-        } else if (dynamic => 14) {
+        } else if (dynamic >= 14) {
           freqctx.fillStyle = '#00ff00';
         //} else {
         //  freqctx.fillStyle = "#"+dynaRange.colourAt( ((dynamic-8 )/8) * 100 );
