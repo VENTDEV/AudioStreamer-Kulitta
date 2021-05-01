@@ -53,7 +53,7 @@
     $sql = $sql."
               and ifnull(b.extension,'dir') in (".$audioformats.")
             order by random()||b.id
-            limit 1";
+            limit 10";
     
     foreach ($dbh->query($sql) as $row) {
       if (!empty($row['song'])) {

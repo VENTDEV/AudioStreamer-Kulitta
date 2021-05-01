@@ -333,8 +333,9 @@ function genreRadio(){
     var hid = $(hthis).attr("songId");
     //check if a song is playing
     if (hthis.length > 0) {
-      //check if this is last song in playlist, if so add song automatically 
-      var hnext = $(hthis).parent().next().children("a");
+      //check if this is third to the last song in playlist, if so add 6 songs automatically 
+      //Should do this in a loop, but easier to just write it like this.
+      var hnext = $(hthis).parent().next().next().next().children("a");
       if (hnext.length == 0) {
         $.get("./addNextRadioSong.php?id="+hid, function(data) {
           $("#playlistSortable").append(data);

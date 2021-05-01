@@ -23,29 +23,36 @@
     global $sdb;
     $dbh = new PDO("sqlite:".$sdb);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-    $output = '';
     
-    $output = $output.'<ul id="tree">';
+    
+    echo "<ul id=\"tree\">";
+    echo "<div class=\"top-spacer\"></div>";
+    echo "<input type=\"text\" class=\"scrollfield\" name=\"scrollfield\" placeholder=\"scroll to\" onKeyUp=\"scrollFocusWrap(this)\" onClick=\"$('#scrollfield').select()\" value=\"\">";
+    
+    $sql = "select 1 from music where level <= 1 and is_dir = 1 ";
+    foreach ($dbh->query($sql) as $row) {
+      $cnt = $cnt + 1;
+    }
+    
+    echo "<div class=\"total\">(Total folders: ".$cnt.")</div>";
+    
     //$sql = "select id, filename from music where level <= 1 and is_dir = 1 order by path collate nocase";
     $sql = "select id, filename from music where level <= 1 and is_dir = 1 order by filename collate nocase";
     foreach ($dbh->query($sql) as $row) {
-      $output = $output.'<li><a href="#" onClick="getDirectory('.$row['id'].')" title="'.utf8_encode_AS($row['filename']).'">'.utf8_encode_AS($row['filename']).'</a></li>';
-      $cnt = $cnt + 1;
+      echo "<li><a href=\"#\" onClick=\"getDirectory(".$row['id'].")\" title=\"".utf8_encode_AS($row['filename'])."\">".utf8_encode_AS($row['filename'])."</a></li>";
     }   
-    $output = $output. '</ul>';
+    echo "</ul>";
     //include totals
-    $output = '<div class="top-spacer"></div>'.
-              '<input type="text" class="scrollfield" name="scrollfield" placeholder="scroll to" onKeyUp="scrollFocusWrap(this)" onClick="$(\'#scrollfield\').select()" value="">'. 
-              '<div class="total">(Total folders: '.$cnt.')</div>'.$output;
+
     
     //close connection
     $dbh = null;
   }
   catch(PDOException $e)
   {
-    $output = $output.'<br/>'.$e->getMessage();
+    echo "<br/>".$e->getMessage();
   }  
 
-  echo $output;
+
 
 ?> 
